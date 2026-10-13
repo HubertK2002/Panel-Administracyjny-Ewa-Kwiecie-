@@ -25,8 +25,8 @@
                 <section class="panel">
                     <div class="list-head"><div><h2>Twoje przedszkola</h2><p class="panel-desc" style="margin:4px 0 0">Lista wszystkich dodanych placówek.</p></div><span class="count-pill">{{ $kindergartens->count() }} {{ $kindergartens->count() === 1 ? 'placówka' : ($kindergartens->count() % 10 >= 2 && $kindergartens->count() % 10 <= 4 && ($kindergartens->count() % 100 < 12 || $kindergartens->count() % 100 > 14) ? 'placówki' : 'placówek') }}</span></div>
                     @forelse ($kindergartens as $kindergarten)
-                        <article class="kindergarten"><div class="kindergarten-mark">⌂</div><div><h3>{{ $kindergarten->name }}</h3><p>@if ($kindergarten->town){{ $kindergarten->street }} {{ $kindergarten->street_number }}
-{{ $kindergarten->postal_code }} {{ $kindergarten->town }}@else{{ $kindergarten->address }}@endif</p></div></article>
+                        <article class="kindergarten"><div class="kindergarten-mark">⌂</div><div><h3>{{ $kindergarten->nazwa }}</h3><p>{{ $kindergarten->ulica }} {{ $kindergarten->numer }}
+{{ $kindergarten->kod_pocztowy }} {{ $kindergarten->miejscowosc }}</p></div></article>
                     @empty
                         <div class="empty"><div class="empty-icon">⌂</div><strong>Jeszcze tu pusto</strong><div>Dodaj pierwsze przedszkole za pomocą formularza.</div></div>
                     @endforelse

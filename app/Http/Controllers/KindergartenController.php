@@ -12,7 +12,7 @@ class KindergartenController extends Controller
     public function index(): View
     {
         return view('kindergartens.index', [
-            'kindergartens' => Kindergarten::query()->latest()->get(),
+            'kindergartens' => Kindergarten::query()->latest('created_at')->get(),
         ]);
     }
 
@@ -34,8 +34,12 @@ class KindergartenController extends Controller
             'postal_code.regex' => 'Kod pocztowy wpisz w formacie 00-000.',
         ]);
 
-        Kindergarten::create($validated + [
-            'address' => $validated['street'].' '.$validated['street_number']."\n".$validated['postal_code'].' '.$validated['town'],
+        Kindergarten::create([
+            'nazwa' => $validated['name'],
+            'miejscowosc' => $validated['town'],
+            'ulica' => $validated['street'],
+            'numer' => $validated['street_number'],
+            'kod_pocztowy' => $validated['postal_code'],
         ]);
 
         return redirect()->route('kindergartens.index')->with('success', 'Przedszkole zostało dodane.');

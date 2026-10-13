@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Kindergarten extends Model
 {
-    protected $fillable = ['name', 'address', 'town', 'street', 'street_number', 'postal_code'];
+    protected $table = 'wp_przedszkola';
+
+    protected $fillable = ['nazwa', 'miejscowosc', 'ulica', 'numer', 'kod_pocztowy'];
 }
